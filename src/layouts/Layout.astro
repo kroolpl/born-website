@@ -1,0 +1,113 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="BORN - Exceptional Family Homes and Flats" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+
+    <style is:global>
+      /* Slide animation for page transitions */
+      @keyframes slideInFromRight {
+        from { 
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to { 
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideOutToLeft {
+        from { 
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to { 
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+      }
+
+      ::view-transition-old(root) {
+        animation: slideOutToLeft 0.8s ease-in-out both;
+      }
+
+      ::view-transition-new(root) {
+        animation: slideInFromRight 0.8s ease-in-out both;
+      }
+
+      /* Prevent navbar from transitioning */
+      ::view-transition-group(navbar) {
+        animation: none;
+      }
+      
+      ::view-transition-old(navbar),
+      ::view-transition-new(navbar) {
+        animation: none;
+      }
+
+      /* Ensure Tailwind styles are applied during transitions */
+      :root {
+        --tw-prose-body: theme('colors.primary.700');
+        --tw-prose-headings: theme('colors.primary.900');
+        --tw-prose-links: theme('colors.primary.900');
+        --tw-prose-bold: theme('colors.primary.900');
+        --tw-prose-quotes: theme('colors.primary.700');
+        --tw-prose-quote-borders: theme('colors.primary.300');
+        --tw-prose-counters: theme('colors.primary.600');
+        --tw-prose-bullets: theme('colors.primary.400');
+      }
+
+      .prose {
+        max-width: none;
+      }
+
+      .prose :where(h2):not(:where([class~="not-prose"] *)) {
+        font-family: theme('fontFamily.display');
+        margin-top: 2em;
+        margin-bottom: 1em;
+      }
+
+      .prose :where(ul):not(:where([class~="not-prose"] *)) {
+        list-style-type: none;
+        padding-left: 0;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <Navigation />
+    <main transition:animate="slide">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Reapply Tailwind typography styles after view transitions
+      document.addEventListener('astro:after-swap', () => {
+        document.querySelectorAll('.prose').forEach((element: HTMLElement) => {
+          element.classList.remove('prose');
+          void element.offsetWidth; // Force reflow
+          element.classList.add('prose');
+        });
+      });
+    </script>
+  </body>
+</html>

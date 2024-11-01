@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '@fontsource-variable/inter';
+import '@fontsource/plus-jakarta-sans';
+---
+
+<Layout title="Contact - BORN">
+  <section class="min-h-screen pt-40 px-4 md:px-8 bg-[#f9f9f9]">
+    <div class="max-w-5xl mx-auto">
+      <!-- Header -->
+      <div class="mb-24">
+        <p class="text-sm uppercase tracking-[0.2em] text-primary-600 mb-4">Contact</p>
+        <h1 class="font-display text-6xl md:text-7xl mb-6 leading-tight">Let's start a conversation.</h1>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+        <!-- Contact Form -->
+        <div class="lg:col-span-7">
+          <form class="space-y-12">
+            <div class="space-y-12">
+              <div>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-primary-200 focus:ring-0 focus:border-primary-900 transition-colors font-body placeholder:text-primary-400 text-lg"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email Address"
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-primary-200 focus:ring-0 focus:border-primary-900 transition-colors font-body placeholder:text-primary-400 text-lg"
+                  required
+                />
+              </div>
+              <div>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Your Message"
+                  class="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-primary-200 focus:ring-0 focus:border-primary-900 transition-colors font-body placeholder:text-primary-400 text-lg resize-none"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="bg-primary-900 text-white px-12 py-4 text-lg hover:bg-primary-800 transition-colors font-body tracking-wide"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="lg:col-span-5 space-y-16">
+          <div>
+            <p class="text-sm uppercase tracking-[0.2em] text-primary-600 mb-8">Visit Us</p>
+            <div class="space-y-8 text-lg">
+              <p class="leading-relaxed">
+                123 Development Street<br />
+                City, State 12345<br />
+                United Kingdom
+              </p>
+              
+              <p class="leading-relaxed">
+                T: (555) 123-4567<br />
+                E: info@born.com
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-sm uppercase tracking-[0.2em] text-primary-600 mb-8">Hours</p>
+            <ul class="space-y-4 text-lg">
+              <li class="flex justify-between items-center">
+                <span>Monday — Friday</span>
+                <span class="text-primary-600">9:00 — 18:00</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <span>Saturday</span>
+                <span class="text-primary-600">10:00 — 16:00</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <span>Sunday</span>
+                <span class="text-primary-600">Closed</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

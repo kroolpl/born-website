@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '@fontsource-variable/inter';
+import '@fontsource/plus-jakarta-sans';
+
+const publishDate = new Date('2024-04-16');
+const formattedDate = publishDate.toLocaleDateString('pl-PL', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout title="Od działki po klucze – krok po kroku przez proces budowy domu w Polsce - BORN">
+  <article>
+    <!-- Hero Section -->
+    <div class="relative h-[70vh] flex items-center justify-center mb-16">
+      <div class="absolute inset-0">
+        <img 
+          src="/images/domy1.jpg"
+          alt="Budowa domu w Polsce"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black/40"></div>
+      </div>
+      <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+        <div class="flex items-center justify-center text-sm mb-6 space-x-4 font-medium">
+          <time datetime={publishDate.toISOString()}>{formattedDate}</time>
+          <span>•</span>
+          <span>Autor: Zespół BORN</span>
+          <span>•</span>
+          <span>15 min czytania</span>
+        </div>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
+          Od działki po klucze – krok po kroku przez proces budowy domu w Polsce
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+          Kompleksowy przewodnik dla osób planujących budowę domu, obejmujący wszystkie etapy: od zakupu działki, przez formalności prawne, aż po odbiór kluczy.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="max-w-3xl mx-auto px-4 pb-20">
+      <div class="prose prose-lg max-w-none">
+        <p class="text-xl leading-relaxed text-primary-600 mb-12">
+          Budowa własnego domu to marzenie wielu osób, ale droga do jego realizacji bywa złożona i wymaga dokładnego planowania oraz znajomości poszczególnych etapów. W tym przewodniku przejdziemy przez każdy krok, który pozwoli Ci zrealizować ten cel w sposób przemyślany i zgodny z przepisami prawa.
+        </p>
+
+        <h2 class="font-display text-3xl mb-6">1. Zakup działki – od czego zacząć?</h2>
+        <p>
+          Zakup działki to pierwszy i kluczowy krok na drodze do własnego domu. Wybór odpowiedniej lokalizacji ma ogromne znaczenie – nie tylko dla komfortu życia, ale także dla kosztów budowy.
+        </p>
+        
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span><strong>Lokalizacja i dojazd:</strong> Zwróć uwagę na dostępność komunikacyjną, bliskość szkół, sklepów czy terenów zielonych. Ważne jest też, aby działka miała dostęp do drogi publicznej.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span><strong>Status działki w MPZP:</strong> Upewnij się, że wybrana działka posiada status budowlany w Miejscowym Planie Zagospodarowania Przestrzennego (MPZP).</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span><strong>Media:</strong> Dostęp do mediów, takich jak prąd, gaz, woda czy kanalizacja, to istotna kwestia wpływająca na koszty i wygodę użytkowania domu.</span>
+          </li>
+        </ul>
+
+        <h2 class="font-display text-3xl mb-6 mt-12">2. Formalności prawne – co jest niezbędne?</h2>
+        <div class="bg-primary-50 p-6 rounded-lg mb-8">
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="font-semibold mr-2">•</span>
+              <span><strong>Warunki zabudowy:</strong> Jeśli dla Twojej działki nie ma miejscowego planu, konieczne będzie uzyskanie decyzji o warunkach zabudowy.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="font-semibold mr-2">•</span>
+              <span><strong>Projekt budowlany:</strong> To podstawa każdej budowy. Możesz wybrać gotowy projekt lub zamówić indywidualny u architekta.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="font-semibold mr-2">•</span>
+              <span><strong>Pozwolenie na budowę:</strong> W przypadku większości domów jednorodzinnych jest wymagane pozwolenie na budowę.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Continue with remaining sections using similar styling -->
+        
+        <blockquote class="my-12 pl-6 border-l-4 border-primary-600 italic text-xl text-primary-700">
+          "Budowa domu w Polsce, choć złożona, staje się bardziej dostępna dzięki odpowiedniemu planowaniu i znajomości wszystkich etapów."
+        </blockquote>
+
+        <h2 class="font-display text-3xl mb-6">5. Odbiór budynku i formalności końcowe</h2>
+        <p class="mb-8">
+          Kiedy dom jest gotowy, czas na odbiór budynku. Na tym etapie sprawdza się, czy wszystkie elementy są zgodne z projektem i wymaganiami prawnymi.
+        </p>
+
+        <div class="bg-primary-50 p-6 rounded-lg mb-12">
+          <h3 class="font-display text-xl mb-4">Kluczowe elementy odbioru:</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Odbiór techniczny instalacji i stanu technicznego</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Zgłoszenie zakończenia budowy</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Podłączenie mediów do budynku</span>
+            </li>
+          </ul>
+        </div>
+
+        <p class="text-lg leading-relaxed mb-12">
+          Powodzenia w drodze do własnych czterech ścian!
+        </p>
+      </div>
+
+      <!-- Author Bio -->
+      <div class="mt-16 pt-8 border-t border-primary-100">
+        <div class="flex items-center">
+          <img 
+            src="/images/g66.png"
+            alt="BORN Team"
+            class="w-16 h-16 rounded-full object-cover mr-6"
+          />
+          <div>
+            <h3 class="font-display text-lg mb-2">Zespół BORN</h3>
+            <p class="text-primary-600 leading-relaxed">Eksperci w dziedzinie budownictwa i nieruchomości, z wieloletnim doświadczeniem w realizacji projektów mieszkaniowych.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Share Links -->
+      <div class="mt-12 flex items-center justify-center space-x-6">
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Udostępnij na Twitter
+        </a>
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Udostępnij na LinkedIn
+        </a>
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Udostępnij na Facebook
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout> 

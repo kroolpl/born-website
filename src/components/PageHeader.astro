@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  backgroundImage?: string;
+}
+
+const { title, subtitle, backgroundImage } = Astro.props;
+---
+
+<section class="relative py-32 px-4">
+  {backgroundImage && (
+    <div class="absolute inset-0 z-0">
+      <img
+        src={backgroundImage}
+        alt={title}
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+  )}
+  
+  <div class="relative z-10 container mx-auto text-center">
+    <h1 class:list={[
+      "font-display text-4xl md:text-5xl lg:text-6xl mb-6 font-bold",
+      { "text-white": backgroundImage }
+    ]}>
+      {title}
+    </h1>
+    {subtitle && (
+      <p class:list={[
+        "text-xl md:text-2xl max-w-2xl mx-auto",
+        { "text-white": backgroundImage, "text-primary-600": !backgroundImage }
+      ]}>
+        {subtitle}
+      </p>
+    )}
+  </div>
+</section>

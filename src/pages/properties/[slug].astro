@@ -1,0 +1,98 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import type { GetStaticPaths } from 'astro';
+
+const properties = {
+  'modern-family-villa': {
+    title: 'Modern Family Villa',
+    location: 'Suburban Paradise',
+    price: '£750,000',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&q=75&fit=crop&w=1200',
+    beds: 4,
+    baths: 3,
+    sqft: 2500,
+    description: 'This stunning modern villa offers the perfect blend of luxury and functionality. With its spacious open-plan living areas, premium finishes, and state-of-the-art amenities, it\'s ideal for modern family living.',
+    features: [
+      'Open-plan kitchen and living area',
+      'Master suite with walk-in closet',
+      'Home office/study room',
+      'Landscaped garden',
+      'Double garage',
+      'Smart home technology'
+    ]
+  },
+  // Add more properties here
+};
+
+export function getStaticPaths() {
+  return Object.keys(properties).map(slug => ({
+    params: { slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const property = properties[slug];
+---
+
+<Layout title={`${property.title} - BORN`}>
+  <article class="container mx-auto px-4 py-12">
+    <img
+      src={property.image}
+      alt={property.title}
+      class="w-full h-[60vh] object-cover rounded-lg shadow-lg mb-8"
+      transition:name={`property-image-${property.title}`}
+    />
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2">
+        <h1 
+          class="font-display text-4xl mb-4"
+          transition:name={`property-title-${property.title}`}
+        >
+          {property.title}
+        </h1>
+        <p class="text-primary-600 text-xl mb-6">{property.location}</p>
+        
+        <div class="prose max-w-none">
+          <p class="text-lg mb-8">{property.description}</p>
+          
+          <h2 class="font-display text-2xl mb-4">Features</h2>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {property.features.map(feature => (
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary-900 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg h-fit">
+        <div class="text-3xl font-bold mb-6">{property.price}</div>
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          <div class="text-center">
+            <div class="text-2xl font-bold">{property.beds}</div>
+            <div class="text-primary-600">Beds</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">{property.baths}</div>
+            <div class="text-primary-600">Baths</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">{property.sqft}</div>
+            <div class="text-primary-600">Sq Ft</div>
+          </div>
+        </div>
+        <a
+          href="/contact"
+          class="block w-full text-center bg-primary-900 text-white py-3 rounded-lg hover:bg-primary-800 transition-colors"
+        >
+          Schedule Viewing
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>

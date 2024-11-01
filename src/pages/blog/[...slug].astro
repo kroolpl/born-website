@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = new Date(post.data.publishDate).toLocaleDateString('pl-PL', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout title={`${post.data.title} - BORN`}>
+  <article>
+    <!-- Hero Section -->
+    <div class="relative h-[70vh] flex items-center justify-center mb-16">
+      <div class="absolute inset-0">
+        <img 
+          src={post.data.image}
+          alt={post.data.title}
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black/40"></div>
+      </div>
+      <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+        <div class="flex items-center justify-center text-sm mb-6 space-x-4 font-medium">
+          <time datetime={post.data.publishDate}>{formattedDate}</time>
+          <span>•</span>
+          <span>By {post.data.author}</span>
+          {post.data.readingTime && (
+            <>
+              <span>•</span>
+              <span>{post.data.readingTime}</span>
+            </>
+          )}
+        </div>
+        <h1 class="font-display text-5xl md:text-6xl mb-6 leading-tight">
+          {post.data.title}
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+          {post.data.excerpt}
+        </p>
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="max-w-3xl mx-auto px-4 pb-20">
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+
+      <!-- Author Bio -->
+      <div class="mt-16 pt-8 border-t border-primary-100">
+        <div class="flex items-center">
+          <img 
+            src="/images/g66.png"
+            alt={post.data.author}
+            class="w-16 h-16 rounded-full object-cover mr-6"
+          />
+          <div>
+            <h3 class="font-display text-lg mb-2">{post.data.author}</h3>
+            <p class="text-primary-600 leading-relaxed">Expert in property development and sustainable building practices.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Share Links -->
+      <div class="mt-12 flex items-center justify-center space-x-6">
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Share on Twitter
+        </a>
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Share on LinkedIn
+        </a>
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Share on Facebook
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout> 

@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '@fontsource-variable/inter';
+import '@fontsource/plus-jakarta-sans';
+
+const publishDate = new Date('2024-04-15');
+const formattedDate = publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout title="The Future of Sustainable Home Building - BORN">
+  <article>
+    <!-- Hero Section -->
+    <div class="relative h-[70vh] flex items-center justify-center mb-16">
+      <div class="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&q=75&fit=crop&w=2000"
+          alt="Sustainable Home"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black/40"></div>
+      </div>
+      <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+        <div class="flex items-center justify-center text-sm mb-6 space-x-4 font-medium">
+          <time datetime={publishDate.toISOString()}>{formattedDate}</time>
+          <span>•</span>
+          <span>By Sarah Johnson</span>
+          <span>•</span>
+          <span>5 min read</span>
+        </div>
+        <h1 class="font-display text-5xl md:text-6xl mb-6 leading-tight">
+          The Future of Sustainable Home Building
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+          Discover how we are incorporating eco-friendly materials and renewable energy solutions in our newest developments.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="max-w-3xl mx-auto px-4 pb-20">
+      <div class="prose prose-lg max-w-none">
+        <p class="text-xl leading-relaxed text-primary-600 mb-12">
+          As we move further into the 21st century, the importance of sustainable building practices cannot be overstated. At BORN, we're committed to leading the charge in eco-friendly home construction, implementing innovative solutions that not only benefit the environment but also provide long-term value to our homeowners.
+        </p>
+
+        <h2 class="font-display text-3xl mb-6">Embracing Sustainable Materials</h2>
+        <p>
+          One of the fundamental shifts in our approach to home building has been the careful selection of sustainable materials. We're increasingly utilizing:
+        </p>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Recycled steel and aluminum for structural components</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Sustainably sourced timber from certified forests</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Low-carbon concrete alternatives</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Reclaimed materials where appropriate</span>
+          </li>
+        </ul>
+
+        <!-- Rest of the sections with similar styling -->
+        
+        <blockquote class="my-12 pl-6 border-l-4 border-primary-600 italic text-xl text-primary-700">
+          "At BORN, we believe that sustainable building practices are not just a trend but a necessity for the future of housing."
+        </blockquote>
+
+        <p class="text-lg leading-relaxed">
+          By implementing these innovative solutions today, we're creating homes that will stand the test of time while minimizing their environmental impact.
+        </p>
+      </div>
+
+      <!-- Author Bio -->
+      <div class="mt-16 pt-8 border-t border-primary-100">
+        <div class="flex items-center">
+          <img 
+            src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&q=75&fit=crop&w=100"
+            alt="Sarah Johnson"
+            class="w-16 h-16 rounded-full object-cover mr-6"
+          />
+          <div>
+            <h3 class="font-display text-lg mb-2">Sarah Johnson</h3>
+            <p class="text-primary-600 leading-relaxed">Head of Sustainability at BORN, with over 15 years of experience in sustainable architecture and eco-friendly construction practices.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Share Links -->
+      <div class="mt-12 flex items-center justify-center space-x-6">
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Share on Twitter
+        </a>
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Share on LinkedIn
+        </a>
+        <a href="#" class="text-primary-600 hover:text-primary-900 transition-colors">
+          Share on Facebook
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout> 
