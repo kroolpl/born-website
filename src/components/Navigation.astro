@@ -1,159 +1,98 @@
 ---
-const navItems = [
-  { href: '/', text: 'Home' },
-  { href: '/properties', text: 'Properties' },
-  { href: '/about', text: 'About' },
-  { href: '/blog', text: 'Blog' },
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/properties', label: 'Properties' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' }
 ];
 ---
 
-<header 
-  class="fixed w-full z-50 transition-all duration-200" 
-  id="navbar" 
-  transition:persist 
-  transition:name="navbar"
->
-  <div class="absolute inset-0">
-    <div class="flex h-full">
-      <div class="w-1/2 bg-white shadow-sm"></div>
-      <div class="w-1/2 bg-[#FC431C] shadow-sm"></div>
-    </div>
-  </div>
-  
-  <nav class="container mx-auto px-6 relative">
-    <div class="flex items-center justify-between h-16">
-      <a href="/" class="flex items-center w-[140px]" transition:name="logo">
-        <img 
-          src="/images/g66.png" 
-          alt="BORN Logo" 
-          class="h-12 w-auto object-contain"
-          width="140"
-          height="48"
-        />
+<nav class="fixed w-full bg-white/95 backdrop-blur z-50 shadow-sm">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0">
+        <img src="/images/g66.png" alt="BORN Logo" class="h-12 w-auto" />
       </a>
-      
-      <!-- Desktop Menu -->
+
+      <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8">
-        {navItems.map(item => (
-          <a 
-            href={item.href} 
-            class="text-[15px] text-white hover:text-white/80 transition-colors font-medium py-2"
+        {links.map(link => (
+          <a
+            href={link.href}
+            class="text-primary-600 hover:text-primary-900 transition-colors"
           >
-            {item.text}
+            {link.label}
           </a>
         ))}
-        <a 
-          href="/contact" 
-          class="bg-white text-[#FC431C] px-6 py-2.5 rounded-md text-[15px] font-medium hover:bg-white/90 transition-colors ml-4"
-        >
-          Skontaktuj się
-        </a>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button 
-        id="menuButton"
-        class="md:hidden text-[#FC431C] p-2" 
-        aria-label="Menu"
-        aria-expanded="false"
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-md text-primary-600 hover:text-primary-900 hover:bg-primary-50 focus:outline-none"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
         </svg>
       </button>
     </div>
 
-    <!-- Mobile Menu Panel -->
-    <div 
-      id="mobileMenu" 
-      class="md:hidden hidden fixed left-0 right-0 top-16 bg-[#FC431C] shadow-lg"
+    <!-- Mobile Navigation -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden pb-4"
     >
-      <div class="flex flex-col py-4">
-        {navItems.map(item => (
-          <a 
-            href={item.href} 
-            class="text-white hover:bg-white/10 transition-colors font-medium py-3 px-6"
+      <div class="flex flex-col space-y-4">
+        {links.map(link => (
+          <a
+            href={link.href}
+            class="text-primary-600 hover:text-primary-900 transition-colors px-4 py-2 rounded-md hover:bg-primary-50"
           >
-            {item.text}
+            {link.label}
           </a>
         ))}
-        <a 
-          href="/contact" 
-          class="text-white font-medium py-3 px-6 mt-2 hover:bg-white/10 transition-colors"
-        >
-          Skontaktuj się →
-        </a>
       </div>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
 
 <script>
-  function setupNavbar() {
-    const navbar = document.getElementById('navbar');
-    const scrollThreshold = 20;
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > scrollThreshold) {
-        navbar?.classList.add('shadow-md');
-        navbar?.classList.remove('shadow-sm');
-      } else {
-        navbar?.classList.remove('shadow-md');
-        navbar?.classList.add('shadow-sm');
-      }
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
   }
 
-  function setupMobileMenu() {
-    const menuButton = document.getElementById('menuButton');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    if (menuButton && mobileMenu) {
-      menuButton.addEventListener('click', () => {
-        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-        menuButton.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
-        mobileMenu.classList.toggle('hidden');
-
-        // Change menu icon
-        const svg = menuButton.querySelector('svg');
-        if (svg) {
-          if (!isExpanded) {
-            svg.innerHTML = `
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            `;
-          } else {
-            svg.innerHTML = `
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            `;
-          }
-        }
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (event) => {
-        if (!menuButton.contains(event.target as Node) && 
-            !mobileMenu.contains(event.target as Node) && 
-            !mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-          menuButton.setAttribute('aria-expanded', 'false');
-          const svg = menuButton.querySelector('svg');
-          if (svg) {
-            svg.innerHTML = `
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            `;
-          }
-        }
-      });
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (event) => {
+    if (mobileMenu && mobileMenuButton && 
+        !mobileMenu.contains(event.target as Node) && 
+        !mobileMenuButton.contains(event.target as Node)) {
+      mobileMenu.classList.add('hidden');
     }
-  }
+  });
 
-  // Setup on initial load
-  setupMobileMenu();
-  setupNavbar();
-
-  // Setup again after view transitions
-  document.addEventListener('astro:page-load', () => {
-    setupMobileMenu();
-    setupNavbar();
+  // Close mobile menu when window is resized to desktop size
+  window.addEventListener('resize', () => {
+    if (mobileMenu && window.innerWidth >= 768) {
+      mobileMenu.classList.add('hidden');
+    }
   });
 </script>
+
+<style>
+  /* Add smooth transition for mobile menu */
+  #mobile-menu {
+    transition: all 0.3s ease-in-out;
+  }
+</style>
