@@ -102,10 +102,12 @@ const { title } = Astro.props;
     <script>
       // Reapply Tailwind typography styles after view transitions
       document.addEventListener('astro:after-swap', () => {
-        document.querySelectorAll('.prose').forEach((element: HTMLElement) => {
-          element.classList.remove('prose');
-          void element.offsetWidth; // Force reflow
-          element.classList.add('prose');
+        document.querySelectorAll('.prose').forEach((element: Element) => {
+          if (element instanceof HTMLElement) {
+            element.classList.remove('prose');
+            void element.offsetWidth; // Force reflow
+            element.classList.add('prose');
+          }
         });
       });
     </script>

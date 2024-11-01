@@ -1,37 +1,36 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import type { GetStaticPaths } from 'astro';
 
-const properties = {
-  'modern-family-villa': {
+// Define your properties data
+const properties = [
+  {
+    slug: 'modern-family-villa',
     title: 'Modern Family Villa',
     location: 'Suburban Paradise',
     price: '£750,000',
-    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&q=75&fit=crop&w=1200',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&q=75&fit=crop&w=600',
     beds: 4,
     baths: 3,
     sqft: 2500,
-    description: 'This stunning modern villa offers the perfect blend of luxury and functionality. With its spacious open-plan living areas, premium finishes, and state-of-the-art amenities, it\'s ideal for modern family living.',
     features: [
-      'Open-plan kitchen and living area',
-      'Master suite with walk-in closet',
-      'Home office/study room',
-      'Landscaped garden',
-      'Double garage',
-      'Smart home technology'
-    ]
+      'Modern Design',
+      'Spacious Garden',
+      'Smart Home Technology',
+      'Energy Efficient'
+    ],
+    description: 'A beautiful modern family villa with all the amenities you need.'
   },
-  // Add more properties here
-};
+  // Add more properties as needed
+];
 
 export function getStaticPaths() {
-  return Object.keys(properties).map(slug => ({
-    params: { slug }
+  return properties.map(property => ({
+    params: { slug: property.slug },
+    props: { property }
   }));
 }
 
-const { slug } = Astro.params;
-const property = properties[slug];
+const { property } = Astro.props;
 ---
 
 <Layout title={`${property.title} - BORN`}>

@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
