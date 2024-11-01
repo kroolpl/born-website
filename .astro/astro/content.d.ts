@@ -146,14 +146,14 @@ declare module 'astro:content' {
   slug: "od-dzialki-po-klucze";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "the-future-of-sustainable-home-building.md": {
 	id: "the-future-of-sustainable-home-building.md";
   slug: "the-future-of-sustainable-home-building";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
 
@@ -165,5 +165,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../../src/content/config.js");
 }

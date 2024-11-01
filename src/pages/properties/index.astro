@@ -4,26 +4,57 @@ import { properties } from '../../data/properties';
 ---
 
 <Layout title="Properties - BORN">
+  <!-- Hero Section -->
+  <section class="relative h-[60vh] flex items-center justify-center mb-16">
+    <div class="absolute inset-0">
+      <img 
+        src="/images/domy1.jpg"
+        alt="BORN Properties"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+    <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+      <h1 class="font-display text-5xl md:text-6xl mb-6">Our Properties</h1>
+      <p class="text-xl md:text-2xl text-white/90">
+        Discover our collection of exceptional homes
+      </p>
+    </div>
+  </section>
+
+  <!-- Properties Grid -->
   <section class="py-20 px-4">
     <div class="container mx-auto">
-      <h1 class="font-display text-4xl md:text-5xl mb-12 text-center">Our Properties</h1>
-      
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {properties.map(property => (
-          <a href={`/properties/${property.slug}`} class="block">
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-              <img
-                src={property.image}
-                alt={property.title}
-                class="w-full h-48 object-cover"
-              />
-              <div class="p-6">
-                <h2 class="font-display text-xl mb-2">{property.title}</h2>
-                <p class="text-primary-600 mb-4">{property.location}</p>
-                <p class="text-2xl font-bold">{property.price}</p>
+          <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+            <a href={`/properties/${property.slug}`} class="block">
+              <div class="relative h-64">
+                <img
+                  src={property.image}
+                  alt={property.title}
+                  class="w-full h-full object-cover"
+                />
               </div>
-            </div>
-          </a>
+              <div class="p-6">
+                <h2 class="font-display text-2xl mb-2">{property.title}</h2>
+                <p class="text-primary-600 mb-4">{property.location}</p>
+                <div class="flex justify-between items-center mb-4">
+                  <p class="text-xl font-semibold">{property.price}</p>
+                  <div class="flex space-x-4 text-primary-600">
+                    <span>{property.beds} beds</span>
+                    <span>{property.baths} baths</span>
+                    <span>{property.sqft} m²</span>
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-primary-100">
+                  <span class="text-primary-900 font-medium hover:text-primary-700 transition-colors">
+                    View Details →
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
         ))}
       </div>
     </div>
