@@ -1,27 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
-// Define your properties data
-const properties = [
-  {
-    slug: 'modern-family-villa',
-    title: 'Modern Family Villa',
-    location: 'Suburban Paradise',
-    price: '£750,000',
-    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&q=75&fit=crop&w=600',
-    beds: 4,
-    baths: 3,
-    sqft: 2500,
-    features: [
-      'Modern Design',
-      'Spacious Garden',
-      'Smart Home Technology',
-      'Energy Efficient'
-    ],
-    description: 'A beautiful modern family villa with all the amenities you need.'
-  },
-  // Add more properties as needed
-];
+import { properties } from '../../data/properties.ts';
 
 export function getStaticPaths() {
   return properties.map(property => ({
@@ -57,7 +36,7 @@ const { property } = Astro.props;
           
           <h2 class="font-display text-2xl mb-4">Features</h2>
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {property.features.map(feature => (
+            {property.features?.map(feature => (
               <li class="flex items-center">
                 <svg class="w-5 h-5 text-primary-900 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
